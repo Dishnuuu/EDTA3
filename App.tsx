@@ -34,10 +34,13 @@ const App: React.FC = () => {
   }, []);
 
   // Helper to calculate age from DOB
-  const calculateAge = (dob: string | undefined): number => {
-    if (!dob) return 0;
+  const calculateAge = (dob: string | undefined): number | string => {
+    if (!dob) return "N/A";
     const birthDate = new Date(dob);
     const today = new Date();
+    
+    if (isNaN(birthDate.getTime())) return "N/A";
+
     let age = today.getFullYear() - birthDate.getFullYear();
     const m = today.getMonth() - birthDate.getMonth();
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
@@ -362,7 +365,10 @@ const App: React.FC = () => {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-1">
-                              <label className="text-xs text-gold1/80 uppercase font-bold tracking-wider">Date of Birth</label>
+                              <div className="flex justify-between items-center">
+                                <label className="text-xs text-gold1/80 uppercase font-bold tracking-wider">Date of Birth</label>
+                                <span className="text-xs text-white/50">Calculated Age: <span className="text-white font-bold">{calculateAge(editForm.dob)}</span></span>
+                              </div>
                               <input 
                                 type="date" 
                                 value={editForm.dob || ''} 
