@@ -4,7 +4,7 @@ import ParticleCanvas from './components/ParticleCanvas';
 import CursorGlow from './components/CursorGlow';
 import { TEAM_MEMBERS } from './constants';
 import { Member, ViewState } from './types';
-import { ArrowLeft, Instagram, ExternalLink, UserCog, Upload, Save, X, Lock, Key } from 'lucide-react';
+import { ArrowLeft, Instagram, ExternalLink, UserCog, Upload, Save, X, Lock, Key, Eye, Pencil } from 'lucide-react';
 
 const App: React.FC = () => {
   // State for members (allows editing)
